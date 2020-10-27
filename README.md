@@ -18,6 +18,6 @@ The following are the key functional aspects of my application:
 
 ## Commands to run the application
 
-• npm run test: to run unit test cases.
-• npm run start: to run the application
-• npm run start-dev: to run the application as a developer
+• `npm run test`: to run unit test cases.
+• `npm run start`: to run the application
+• `npm run start-dev`: to run the application as a developer

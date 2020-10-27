@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<header>
+    <% include ../shared/navigation %>
+</header>
+
+<body class="container">
+    <div style="margin-left: 30%;">
+        <h1 style="font-weight: bold; color: rgb(4, 80, 80);"> Sign Up</h1>
+        <form class="form form-group" action="/auth/register" method="POST">
+            <label>User Id <span style="color: red; font-size: 1.7rem;">*</span></label>
+            <input style="width: 50%;" class="form-control" type="text" name="username"
+                value="<%- user.username %>"><br />
+            <label>Password<span style="color: red; font-size: 1.7rem;">*</span></label>
+            <input style="width: 50%;" class="form-control" type="password" name="password" value=""><br />
+            <label>Role<span style="color: red; font-size: 1.7rem;">*</span></label>
+            <select style="width: 50%;" class="form-control" name="role">
+                <option value="">Please select a role</option>
+                <option value="manager">Manager</option>
+                <option value="employee">Employee</option>
+            </select><br />
+            <input class="btn btn-success" type="submit" value="Submit" />
+        </form>
+        <% if (message) { %>
+        <span style="font-weight: bold; color: red;"><%= message %></span>
+        <% } %>
+        <div>
+            <span style="font-weight: bold;"> Existing User ?</span>
+            <a href="/auth/login" class="btn btn-primary">Login Here</a>
+        </div>
+    </div>
+</body>
+
+</html>

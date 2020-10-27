@@ -1,0 +1,35 @@
+<head>
+    <% include ../shared/styleLinks %>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a href="/jobs"><img width="150" height="75"
+            src="https://www.jobdiva.com/info/misc/JobDiva-Homepage-Logo.png" /></a>
+    <span style="font-weight: bold; font-size: x-large;"></span>
+    <a class="navbar-brand" href="/">
+    </a>
+
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto" style="font-size: 1.5rem;">
+            <li class="nav-item"><a class="nav-link" href="/jobs">Positions</a></li>
+            <% if (typeof isLoggedIn !== 'undefined' && isLoggedIn) { %>
+            <% if (typeof isManager !== 'undefined' && isManager) { %>
+            <li class="nav-item"><a class="nav-link" href="/jobs/create">Create Position</a></li>
+            <% } %>
+            <% } %>
+            <% if (typeof isLoggedIn === 'undefined' || !isLoggedIn) { %>
+            <li class="nav-item"><a class="nav-link" href="/auth/login">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="/auth/register">New User</a></li>
+            <% } %>
+        </ul>
+    </div>
+    <ul style="font-size: 1.2rem;" class="nav navbar-nav navbar-right">
+        <% if (typeof isLoggedIn !== 'undefined' && isLoggedIn) { %>
+        <li><a href="/auth/logout"><span class="glyphicon glyphicon-log-out"></span> Logout </a></li>
+        <%} %>
+    </ul>
+
+</nav>
+<footer class="page-footer">
+    <% include ../shared/footer %>
+</footer>

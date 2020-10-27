@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<header>
+    <% include ../shared/navigation %>
+</header>
+
+<body class="container">
+
+    <br />
+
+    <h2 style="color: rgb(190, 140, 48);text-align: center; font-size: 2.2rem; "><%= message %></h2>
+    <table class="table table-stripped">
+        <% if (jobs) { %>
+        <thead>
+            <th>Project Name</th>
+            <th>Technologies</th>
+            <th> Role</th>
+            <% if (isManager) { %>
+            <th>Status</th>
+            <% } %>
+            <th>Action</th>
+            <th></th>
+        </thead>
+        <% jobs.forEach(function(job){%>
+        <tr>
+            <td>
+                <h3>
+                    <%= job.projectName %>
+                </h3>
+            </td>
+            <td>
+                <h3>
+                    <%= job.technologies %>
+                </h3>
+            </td>
+            <td>
+                <h3>
+                    <%= job.role %>
+                </h3>
+            </td>
+            <% if (isManager) { %>
+            <td>
+                <h3>
+                    <%= job.status %>
+                </h3>
+            </td>
+            <% } %>
+            <% if (isManager) {%>
+            <td>
+                <form method="GET" action="/jobs/update/<%= job._id%>">
+                    <input class="btn btn-warning" type="submit" name="Update" value="Update" />
+                </form>
+            </td>
+            <% } %>
+            <td>
+                <form method="GET" action="/jobs/job/<%= job._id %>">
+                    <input class="btn btn-info" type="submit" name="Details" value="View Details" />
+                </form>
+            </td>
+            <% if (!isManager && !job.appliedBy.includes(username)) { %>
+            <td>
+                <form method="POST" action="/jobs/<%= job._id %>/apply">
+                    <input class="btn btn-success" type="submit" name="apply" value="Apply" />
+                </form>
+            </td>
+            <% } %>
+            <% if (!isManager && job.appliedBy.includes(username)) { %>
+            <td>
+                <input class="btn btn-secondary" type="submit" name="apply" value="Applied" disabled="true" />
+            </td>
+            <% } %>
+            <% if (isManager) {%>
+            <td>
+                <form method="POST" action="/jobs/delete/<%= job._id %>">
+                    <input class="btn btn-danger" type="submit" name="Delete" value="Delete" />
+                </form>
+            </td>
+            <% } %>
+        </tr>
+        <% });%>
+        <% } %>
+    </table>
+    </div>
+</body>
+
+</html>

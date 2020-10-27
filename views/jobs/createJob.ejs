@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<link ref="stylesheet" href="../../public/stylesheets/style.css">
+
+<header>
+    <% include ../shared/navigation %>
+</header>
+
+<body class="container">
+    <form style="margin-left: 25%;" class="form-group" action="/jobs/saveOrUpdateJob" method="POST">
+        <input type="hidden" name="_id" value="<%- job._id %>">
+        <label>Project Name</label>
+        <input style="width: 75%;" class="form-control" type="text" name="projectName" value="<%- job.projectName%>"
+            required><br />
+        <label>Client Name </label>
+        <input style="width: 75%;" class="form-control" type="text" name="clientName" value="<%- job.clientName%>"
+            required><br />
+        <label>Technologies</label>
+        <input style="width: 75%;" class="form-control" type="text" name="technologies" value="<%- job.technologies%>"
+            required><br />
+        <label>Role</label>
+        <input style="width: 75%;" class="form-control" type="text" name="role" value="<%- job.role%>" required><br />
+        <label>Job Description</label>
+        <input style="width: 75%;" class="form-control" type="text" name="jobDescription"
+            value="<%- job.jobDescription%>"><br />
+        <label>Status</label>
+        <select style="width: 75%;" class="form-control" name="status" required>
+            <option value="">Select Job Status</option>
+            <option value="open" <%- job.status ==='open' ? 'selected' : ''%>>Open</option>
+            <option value="closed" <%- job.status ==='closed' ? 'selected' : ''%>>Closed</option>
+        </select> <br />
+
+        <input class="btn btn-primary" type="submit" value="Submit" />
+    </form>
+</body>
+
+</html>

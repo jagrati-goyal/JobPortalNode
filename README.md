@@ -1,4 +1,5 @@
 # Employee Job Portal
+A job Portal where employee can apply for a new opening and manager can manage the openings.
 The following are the key functional aspects of my application:
 • My portal supports 2 kinds of users:
 1) Employee
